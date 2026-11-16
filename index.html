@@ -1,0 +1,1737 @@
+
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#F8F8F8">
+  <meta name="description" content="Fenixpace is a space to plan intentionally, keep your commitments, track your consistency, and grow alongside others. Join for free.">
+  <title>Fenixpace — Make room for what matters</title>
+  <link rel="icon" href="https://res.cloudinary.com/de6ugcwgm/image/upload/v1794849952/logo_b018zu.jpg" type="image/png">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --fp-ink: #1e1e1e;
+      --fp-ink-soft: #374151;
+      --fp-muted: #6b7280;
+      --fp-muted-light: #9ca3af;
+      --fp-green: #EF7722;
+      --fp-green-deep: #df6816;
+      --fp-green-bright: #FAA533;
+      --fp-green-pale: #fff4ec;
+      --fp-paper: #F8F8F8;
+      --fp-white: #ffffff;
+      --fp-border: #e5e7eb;
+      --fp-shadow: 0 4px 14px rgba(0,0,0,.06);
+      --fp-radius: 18px;
+      --fp-max: 1160px;
+      --fp-blue: #0BA6DF;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 86px; }
+
+    body {
+      margin: 0;
+      color: var(--fp-ink);
+      background: var(--fp-paper);
+      font-family: 'Inter', sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    body, button, a { -webkit-tap-highlight-color: transparent; }
+    a { color: inherit; text-decoration: none; }
+    button { font: inherit; }
+    img { max-width: 100%; display: block; }
+
+    .fp-container {
+      width: min(var(--fp-max), calc(100% - 48px));
+      margin-inline: auto;
+    }
+
+    .fp-eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      color: var(--fp-green);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .11em;
+      text-transform: uppercase;
+    }
+
+    .fp-eyebrow::before {
+      content: '';
+      width: 20px;
+      height: 1px;
+      background: currentColor;
+    }
+
+    .fp-section { padding: 88px 0; }
+
+    .fp-section-heading {
+      max-width: 680px;
+      margin: 0 auto 42px;
+      text-align: center;
+    }
+
+    .fp-section-heading h2 {
+      margin: 13px 0 13px;
+      font: 700 clamp(28px, 3.6vw, 42px)/1.18 'Inter', sans-serif;
+      letter-spacing: -.045em;
+    }
+
+    .fp-section-heading p {
+      margin: 0;
+      color: var(--fp-muted);
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    /* Navigation */
+    .fp-nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,.86);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid rgba(229,231,235,.92);
+    }
+
+    .fp-nav-inner {
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+
+    .fp-brand {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+      flex-shrink: 0;
+    }
+
+    .fp-brand img {
+      width: 36px;
+      height: 36px;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    .fp-brand-name {
+      font: 700 18px/1 'Inter', sans-serif;
+      letter-spacing: -.035em;
+    }
+
+    .fp-nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      margin-left: auto;
+    }
+
+    .fp-nav-links a {
+      color: #6b7280;
+      font-size: 12px;
+      font-weight: 600;
+      transition: color .18s ease;
+    }
+
+    .fp-nav-links a:hover { color: var(--fp-green); }
+
+    .fp-nav-actions {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .fp-nav-login {
+      padding: 10px 13px;
+      color: #4b5563;
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .fp-nav-login:hover { color: var(--fp-green); }
+
+    .fp-menu-button {
+      display: none;
+      width: 40px;
+      height: 40px;
+      border: 1px solid var(--fp-border);
+      border-radius: 11px;
+      background: #fff;
+      color: var(--fp-ink);
+      cursor: pointer;
+    }
+
+    /* Buttons */
+    .fp-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 9px;
+      min-height: 44px;
+      padding: 0 17px;
+      border: 1px solid transparent;
+      border-radius: 10px;
+      font-size: 12px;
+      font-weight: 600;
+      transition: transform .18s ease, box-shadow .18s ease, background .18s ease, border-color .18s ease;
+      cursor: pointer;
+    }
+
+    .fp-button:hover { transform: translateY(-2px); }
+
+    .fp-button-primary {
+      color: #fff;
+      background: var(--fp-green);
+      box-shadow: 0 4px 12px rgba(239,119,34,.15);
+    }
+
+    .fp-button-primary:hover {
+      background: var(--fp-green-deep);
+      box-shadow: 0 7px 17px rgba(239,119,34,.19);
+    }
+
+    .fp-button-dark {
+      color: #fff;
+      background: var(--fp-green);
+    }
+
+    .fp-button-dark:hover { background: var(--fp-green-deep); }
+
+    .fp-button-outline {
+      color: #4b5563;
+      background: #fff;
+      border-color: #e5e7eb;
+    }
+
+    .fp-button-outline:hover {
+      color: var(--fp-blue);
+      border-color: rgba(11,166,223,.45);
+      background: #fff;
+    }
+
+    .fp-arrow { font-size: 15px; line-height: 1; }
+
+    /* Hero */
+    .fp-hero {
+      position: relative;
+      overflow: hidden;
+      isolation: isolate;
+      padding: 76px 0 82px;
+      color: var(--fp-ink);
+      background:
+        radial-gradient(ellipse at 87% 12%, rgba(250,165,51,.10), transparent 34%),
+        radial-gradient(ellipse at 0% 100%, rgba(11,166,223,.055), transparent 34%),
+        linear-gradient(180deg, #fff 0%, #fff 72%, #fbfbfb 100%);
+      border-bottom: 1px solid #f0f1f2;
+    }
+
+    .fp-hero::before,
+    .fp-hero::after {
+      content: '';
+      position: absolute;
+      z-index: -1;
+      border: 1px solid rgba(239,119,34,.09);
+      border-radius: 50%;
+    }
+
+    .fp-hero::before {
+      width: 620px;
+      height: 620px;
+      right: -230px;
+      top: -390px;
+    }
+
+    .fp-hero::after {
+      width: 470px;
+      height: 470px;
+      right: -155px;
+      top: -315px;
+    }
+
+    .fp-hero-grid {
+      display: grid;
+      grid-template-columns: 1.03fr .97fr;
+      align-items: center;
+      gap: 54px;
+    }
+
+    .fp-hero-copy { max-width: 590px; }
+    .fp-hero .fp-eyebrow { color: var(--fp-green); }
+
+    .fp-hero h1 {
+      margin: 20px 0 18px;
+      font: 700 clamp(42px, 5.1vw, 64px)/1.06 'Inter', sans-serif;
+      letter-spacing: -.06em;
+    }
+
+    .fp-hero h1 span { color: var(--fp-green); }
+
+    .fp-hero-copy > p {
+      max-width: 520px;
+      color: #6b7280;
+      font-size: 15px;
+      line-height: 1.85;
+    }
+
+    .fp-hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 28px;
+    }
+
+    .fp-hero-footnote {
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 9px;
+      margin-top: 21px;
+      color: #8b929b;
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .fp-hero-footnote span {
+      width: 5px;
+      height: 5px;
+      border-radius: 50%;
+      background: var(--fp-green-bright);
+    }
+
+    /* Product preview */
+    .fp-preview-wrap {
+      position: relative;
+      padding: 16px 0 16px 16px;
+    }
+
+    .fp-preview-glow {
+      position: absolute;
+      inset: 10% 0 7% 7%;
+      background: rgba(239,119,34,.10);
+      filter: blur(55px);
+      border-radius: 50%;
+    }
+
+    .fp-preview {
+      position: relative;
+      overflow: hidden;
+      padding: 17px;
+      color: var(--fp-ink);
+      border: 1px solid #e7e9ec;
+      border-radius: 18px;
+      background: rgba(255,255,255,.99);
+      box-shadow: 0 16px 42px rgba(0,0,0,.10);
+      transform: rotate(.7deg);
+    }
+
+    .fp-preview-top {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 2px 2px 15px;
+      border-bottom: 1px solid #eef0f2;
+    }
+
+    .fp-preview-brand {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      font: 700 12px 'Inter', sans-serif;
+    }
+
+    .fp-preview-mark {
+      display: grid;
+      place-items: center;
+      width: 25px;
+      height: 25px;
+      border-radius: 8px;
+      color: #fff;
+      background: linear-gradient(135deg,#EF7722,#FAA533);
+      font-size: 12px;
+      font-weight: 700;
+    }
+
+    .fp-preview-date { color: #9ca3af; font-size: 9px; }
+
+    .fp-preview-greeting { padding: 17px 2px 13px; }
+    .fp-preview-greeting small { color: #9ca3af; font-size: 10px; }
+
+    .fp-preview-greeting h3 {
+      margin: 4px 0 0;
+      font: 700 21px 'Inter', sans-serif;
+      letter-spacing: -.045em;
+    }
+
+    .fp-preview-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    .fp-mini-card {
+      padding: 12px;
+      border: 1px solid #eef0f2;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .fp-mini-label {
+      color: #9ca3af;
+      font-size: 9px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+    }
+
+    .fp-mini-value {
+      margin-top: 6px;
+      font: 700 22px 'Inter', sans-serif;
+      letter-spacing: -.045em;
+    }
+
+    .fp-mini-note { margin-top: 2px; color: #9ca3af; font-size: 9px; }
+
+    .fp-progress-track {
+      height: 5px;
+      margin-top: 11px;
+      overflow: hidden;
+      border-radius: 20px;
+      background: #f1f2f3;
+    }
+
+    .fp-progress-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: var(--fp-green);
+    }
+
+    .fp-mini-card:nth-child(2) .fp-progress-fill { background: var(--fp-blue); }
+
+    .fp-preview-tasklist {
+      margin-top: 11px;
+      padding: 14px;
+      border: 1px solid #eef0f2;
+      border-radius: 12px;
+      background: #fff;
+    }
+
+    .fp-preview-task-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 11px;
+    }
+
+    .fp-preview-task-head strong { font: 600 11px 'Inter', sans-serif; }
+    .fp-preview-task-head span { color: #9ca3af; font-size: 9px; }
+
+    .fp-preview-task {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      padding: 8px 0;
+      border-top: 1px solid #f3f4f5;
+    }
+
+    .fp-check {
+      display: grid;
+      place-items: center;
+      width: 16px;
+      height: 16px;
+      flex-shrink: 0;
+      border: 1px solid #d1d5db;
+      border-radius: 5px;
+      color: #fff;
+      font-size: 9px;
+    }
+
+    .fp-check.done {
+      border-color: var(--fp-green);
+      background: var(--fp-green);
+    }
+
+    .fp-task-text {
+      flex: 1;
+      color: #4b5563;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .fp-task-text.done {
+      color: #9ca3af;
+      text-decoration: line-through;
+    }
+
+    .fp-task-tag {
+      padding: 4px 6px;
+      border-radius: 5px;
+      color: #bd5c18;
+      background: #fff4ec;
+      font-size: 8px;
+      font-weight: 700;
+    }
+
+    .fp-preview-task:nth-of-type(3) .fp-task-tag {
+      color: #087eaa;
+      background: #eef9fd;
+    }
+
+    .fp-preview-bottom {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 13px;
+      color: #9ca3af;
+      font-size: 9px;
+    }
+
+    .fp-preview-bottom b { color: var(--fp-green); }
+
+    /* Trust strip */
+    .fp-proof-strip {
+      padding: 19px 0;
+      border-bottom: 1px solid #eceef0;
+      background: #fff;
+    }
+
+    .fp-proof-inner {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 16px 34px;
+      color: #6b7280;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .fp-proof-item {
+      display: inline-flex;
+      align-items: center;
+      gap: 9px;
+    }
+
+    .fp-proof-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--fp-green);
+    }
+
+    /* Features */
+    .fp-features { background: var(--fp-paper); }
+
+    .fp-feature-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+    }
+
+    .fp-feature-card {
+      min-height: 225px;
+      padding: 23px;
+      border: 1px solid #eceef0;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 3px 12px rgba(0,0,0,.025);
+      transition: transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+    }
+
+    .fp-feature-card:hover {
+      transform: translateY(-3px);
+      border-color: #f2c8ab;
+      box-shadow: 0 8px 18px rgba(0,0,0,.055);
+    }
+
+    .fp-feature-icon {
+      display: grid;
+      place-items: center;
+      width: 41px;
+      height: 41px;
+      border-radius: 12px;
+      color: var(--fp-green);
+      background: #fff4ec;
+    }
+
+    .fp-feature-icon svg { width: 19px; height: 19px; }
+
+    .fp-feature-card:nth-child(even) .fp-feature-icon {
+      color: var(--fp-blue);
+      background: #eef9fd;
+    }
+
+    .fp-feature-card h3 {
+      margin: 20px 0 8px;
+      font: 600 16px 'Inter', sans-serif;
+      letter-spacing: -.025em;
+    }
+
+    .fp-feature-card p {
+      margin: 0;
+      color: var(--fp-muted);
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    /* How it works */
+    .fp-how { background: #fff; }
+
+    .fp-steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .fp-step {
+      position: relative;
+      padding: 25px;
+      border: 1px solid #eceef0;
+      border-radius: 16px;
+      background: #fff;
+      box-shadow: 0 3px 12px rgba(0,0,0,.025);
+    }
+
+    .fp-step-number {
+      display: grid;
+      place-items: center;
+      width: 33px;
+      height: 33px;
+      border-radius: 10px;
+      color: #fff;
+      background: var(--fp-green);
+      font: 700 11px 'Inter', sans-serif;
+    }
+
+    .fp-step h3 {
+      margin: 18px 0 8px;
+      font: 600 16px 'Inter', sans-serif;
+      letter-spacing: -.025em;
+    }
+
+    .fp-step p {
+      margin: 0;
+      color: var(--fp-muted);
+      font-size: 12px;
+      line-height: 1.75;
+    }
+
+    /* Free and paid plans */
+    .fp-plans { background: var(--fp-paper); }
+
+    .fp-plan-intro {
+      max-width: 660px;
+      margin: -18px auto 34px;
+      color: var(--fp-muted);
+      text-align: center;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .fp-plans-layout {
+      display: grid;
+      grid-template-columns: .82fr 1.18fr;
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .fp-free-card,
+    .fp-support-card {
+      border: 1px solid #e9ecef;
+      border-radius: 17px;
+      background: #fff;
+      box-shadow: var(--fp-shadow);
+    }
+
+    .fp-free-card { padding: 27px; }
+
+    .fp-free-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+    }
+
+    .fp-free-card h3,
+    .fp-support-card h3 {
+      margin: 0;
+      font: 700 21px 'Inter', sans-serif;
+      letter-spacing: -.035em;
+    }
+
+    .fp-free-price {
+      margin: 14px 0 7px;
+      font: 700 35px 'Inter', sans-serif;
+      letter-spacing: -.055em;
+    }
+
+    .fp-free-sub { color: var(--fp-muted); font-size: 11px; }
+
+    .fp-plan-badge {
+      padding: 6px 9px;
+      border: 1px solid #f7dfce;
+      border-radius: 99px;
+      color: #c65f19;
+      background: #fff7f1;
+      font-size: 9px;
+      font-weight: 700;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      white-space: nowrap;
+    }
+
+    .fp-plan-list {
+      display: grid;
+      gap: 12px;
+      margin: 24px 0 26px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .fp-plan-list li {
+      display: flex;
+      gap: 10px;
+      color: #4b5563;
+      font-size: 11px;
+      line-height: 1.5;
+    }
+
+    .fp-plan-list svg {
+      width: 15px;
+      height: 15px;
+      flex-shrink: 0;
+      margin-top: 1px;
+      color: var(--fp-green);
+    }
+
+    .fp-free-card .fp-button { width: 100%; }
+    .fp-support-card { padding: 27px; }
+
+    .fp-support-head {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 20px;
+    }
+
+    .fp-support-head p {
+      max-width: 370px;
+      margin: 8px 0 0;
+      color: var(--fp-muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .fp-support-tiers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 9px;
+    }
+
+    .fp-tier {
+      min-height: 180px;
+      padding: 15px 13px;
+      border: 1px solid #eceef0;
+      border-radius: 13px;
+      background: #fff;
+    }
+
+    .fp-tier-label {
+      color: #9ca3af;
+      font-size: 8px;
+      font-weight: 700;
+      letter-spacing: .09em;
+      text-transform: uppercase;
+    }
+
+    .fp-tier h4 {
+      margin: 9px 0 7px;
+      font: 600 13px 'Inter', sans-serif;
+      letter-spacing: -.02em;
+    }
+
+    .fp-tier p {
+      margin: 0;
+      color: var(--fp-muted);
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    .fp-tier-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 13px;
+      color: var(--fp-green);
+      font-size: 10px;
+      font-weight: 700;
+    }
+
+    .fp-tier-link:hover { color: var(--fp-green-deep); }
+
+    .fp-plan-footnote {
+      margin: 17px 0 0;
+      color: #9ca3af;
+      font-size: 10px;
+      line-height: 1.6;
+    }
+
+    /* Comparison */
+    .fp-comparison-wrap {
+      margin-top: 22px;
+      overflow: hidden;
+      border: 1px solid #e9ecef;
+      border-radius: 15px;
+      background: #fff;
+      box-shadow: 0 3px 12px rgba(0,0,0,.025);
+    }
+
+    .fp-comparison-title {
+      padding: 17px 20px 14px;
+      font: 600 14px 'Inter', sans-serif;
+    }
+
+    .fp-table-scroll { overflow-x: auto; }
+
+    .fp-comparison {
+      width: 100%;
+      min-width: 680px;
+      border-collapse: collapse;
+    }
+
+    .fp-comparison th,
+    .fp-comparison td {
+      padding: 13px 16px;
+      border-top: 1px solid #f0f1f2;
+      text-align: center;
+      font-size: 10px;
+    }
+
+    .fp-comparison th {
+      color: #6b7280;
+      background: #fafafa;
+      font-size: 9px;
+      font-weight: 700;
+    }
+
+    .fp-comparison th:first-child,
+    .fp-comparison td:first-child {
+      width: 31%;
+      text-align: left;
+    }
+
+    .fp-comparison td:first-child {
+      color: #4b5563;
+      font-weight: 600;
+    }
+
+    .fp-yes { color: var(--fp-green); font-size: 15px; font-weight: 700; }
+    .fp-no { color: #c4c9cf; }
+
+    /* FAQ */
+    .fp-faq { background: #fff; }
+
+    .fp-faq-list {
+      max-width: 790px;
+      margin: 0 auto;
+      border-top: 1px solid #eceef0;
+    }
+
+    .fp-faq-item { border-bottom: 1px solid #eceef0; }
+
+    .fp-faq-item summary {
+      position: relative;
+      padding: 20px 38px 20px 0;
+      cursor: pointer;
+      list-style: none;
+      font: 600 13px 'Inter', sans-serif;
+    }
+
+    .fp-faq-item summary::-webkit-details-marker { display: none; }
+
+    .fp-faq-item summary::after {
+      content: '+';
+      position: absolute;
+      right: 4px;
+      top: 16px;
+      color: var(--fp-green);
+      font: 500 22px 'Inter', sans-serif;
+    }
+
+    .fp-faq-item[open] summary::after { content: '−'; }
+
+    .fp-faq-item p {
+      max-width: 700px;
+      margin: -4px 0 20px;
+      color: var(--fp-muted);
+      font-size: 12px;
+      line-height: 1.8;
+    }
+
+    /* Final CTA */
+    .fp-final-cta {
+      padding: 55px 0;
+      color: var(--fp-ink);
+      background: #fff4ec;
+      border-top: 1px solid #f8e5d7;
+      border-bottom: 1px solid #f8e5d7;
+    }
+
+    .fp-final-inner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+    }
+
+    .fp-final-inner h2 {
+      max-width: 650px;
+      margin: 0;
+      font: 700 clamp(26px, 3.5vw, 38px)/1.18 'Inter', sans-serif;
+      letter-spacing: -.045em;
+    }
+
+    .fp-final-inner p {
+      margin: 10px 0 0;
+      color: #77716d;
+      font-size: 12px;
+    }
+
+    /* Footer */
+    .fp-footer {
+      padding: 38px 0 26px;
+      background: #fff;
+      color: var(--fp-ink);
+      border-top: 1px solid #e5e7eb;
+    }
+
+    .fp-footer-main {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 38px;
+    }
+
+    .fp-footer-brand { flex: 1 1 260px; }
+
+    .fp-footer-brand p {
+      max-width: 290px;
+      margin: 10px 0 0;
+      color: #9ca3af;
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    /* New contact section */
+    .fp-footer-contact {
+      display: grid;
+      gap: 11px;
+      min-width: 215px;
+    }
+
+    .fp-footer-heading {
+      margin: 2px 0 4px;
+      color: var(--fp-ink);
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: .01em;
+    }
+
+    .fp-footer-contact-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      width: fit-content;
+      color: #6b7280;
+      font-size: 10px;
+      line-height: 1.5;
+      transition: color .18s ease;
+    }
+
+    .fp-footer-contact-item:hover { color: var(--fp-green); }
+
+    .fp-footer-contact-icon {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      flex-shrink: 0;
+      border: 1px solid #f5e6dc;
+      border-radius: 9px;
+      color: var(--fp-green);
+      background: #fff8f3;
+      transition: background .18s ease, border-color .18s ease, transform .18s ease;
+    }
+
+    .fp-footer-contact-item:hover .fp-footer-contact-icon {
+      border-color: #f2c8ab;
+      background: #fff0e5;
+      transform: translateY(-1px);
+    }
+
+    .fp-footer-contact-icon svg {
+      width: 14px;
+      height: 14px;
+      stroke: currentColor;
+    }
+
+    .fp-footer-contact-text {
+      display: flex;
+      flex-direction: column;
+      gap: 2px;
+    }
+
+    .fp-footer-contact-label {
+      color: #9ca3af;
+      font-size: 9px;
+      font-weight: 500;
+    }
+
+    .fp-footer-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 20px;
+      max-width: 300px;
+    }
+
+    .fp-footer-links a {
+      color: #6b7280;
+      font-size: 10px;
+      transition: color .18s ease;
+    }
+
+    .fp-footer-links a:hover { color: var(--fp-green); }
+
+    .fp-footer-bottom {
+      display: flex;
+      justify-content: space-between;
+      gap: 18px;
+      margin-top: 29px;
+      padding-top: 17px;
+      border-top: 1px solid #f0f1f2;
+      color: #9ca3af;
+      font-size: 9px;
+    }
+
+    /* Responsive layouts */
+    @media (max-width: 980px) {
+      .fp-hero-grid {
+        grid-template-columns: 1fr .9fr;
+        gap: 28px;
+      }
+
+      .fp-feature-grid { grid-template-columns: repeat(2, 1fr); }
+      .fp-plans-layout { grid-template-columns: 1fr; }
+
+      .fp-free-card {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 14px 26px;
+      }
+
+      .fp-free-card-top { grid-column: 1 / -1; }
+      .fp-free-card .fp-plan-list { margin: 0; }
+      .fp-free-card .fp-button { align-self: end; }
+    }
+
+    @media (max-width: 760px) {
+      .fp-container { width: min(var(--fp-max), calc(100% - 36px)); }
+      .fp-nav-inner { height: 64px; }
+
+      .fp-menu-button {
+        display: grid;
+        place-items: center;
+      }
+
+      .fp-nav-links {
+        display: none;
+        position: absolute;
+        top: 64px;
+        left: 0;
+        right: 0;
+        padding: 15px 22px 18px;
+        border-bottom: 1px solid var(--fp-border);
+        background: rgba(255,255,255,.98);
+        box-shadow: 0 10px 22px rgba(0,0,0,.06);
+      }
+
+      .fp-nav-links.is-open {
+        display: grid;
+        gap: 0;
+      }
+
+      .fp-nav-links a {
+        padding: 12px 0;
+        border-bottom: 1px solid #f0f1f2;
+      }
+
+      .fp-nav-links a:last-child { border-bottom: 0; }
+      .fp-nav-actions { margin-left: auto; }
+      .fp-nav-login { display: none; }
+
+      .fp-hero { padding: 60px 0 64px; }
+
+      .fp-hero-grid {
+        grid-template-columns: 1fr;
+        gap: 27px;
+      }
+
+      .fp-hero-copy { max-width: 640px; }
+
+      .fp-hero h1 {
+        max-width: 600px;
+        font-size: clamp(40px, 9vw, 58px);
+      }
+
+      .fp-hero-copy > p { font-size: 13px; }
+
+      .fp-preview-wrap {
+        max-width: 540px;
+        margin: 0 auto;
+        padding: 8px 0;
+      }
+
+      .fp-preview { transform: none; }
+      .fp-section { padding: 68px 0; }
+
+      .fp-section-heading { margin-bottom: 32px; }
+      .fp-steps { grid-template-columns: 1fr; }
+
+      .fp-final-inner {
+        align-items: flex-start;
+        flex-direction: column;
+      }
+
+      .fp-footer-main {
+        flex-direction: column;
+        gap: 28px;
+      }
+
+      .fp-footer-brand { flex: initial; }
+      .fp-footer-contact { min-width: 0; }
+    }
+
+    @media (max-width: 540px) {
+      .fp-container { width: calc(100% - 30px); }
+      .fp-brand-name { font-size: 17px; }
+
+      .fp-nav-actions > .fp-button {
+        min-height: 39px;
+        padding: 0 11px;
+        font-size: 10px;
+      }
+
+      .fp-hero-actions {
+        display: grid;
+        grid-template-columns: 1fr;
+      }
+
+      .fp-hero-actions .fp-button { width: 100%; }
+      .fp-hero-footnote { gap: 7px; }
+
+      .fp-preview {
+        padding: 12px;
+        border-radius: 15px;
+      }
+
+      .fp-preview-greeting h3 { font-size: 18px; }
+      .fp-mini-card { padding: 10px; }
+      .fp-mini-value { font-size: 19px; }
+      .fp-feature-grid { grid-template-columns: 1fr; }
+      .fp-feature-card { min-height: auto; }
+
+      .fp-free-card {
+        display: block;
+        padding: 22px;
+      }
+
+      .fp-free-card .fp-plan-list { margin: 22px 0; }
+      .fp-support-card { padding: 22px; }
+      .fp-support-head { flex-direction: column; }
+      .fp-support-tiers { grid-template-columns: 1fr; }
+      .fp-tier { min-height: auto; }
+      .fp-footer-links { gap: 13px 18px; }
+
+      .fp-footer-bottom {
+        flex-direction: column;
+        gap: 9px;
+      }
+
+      .fp-proof-inner {
+        justify-content: flex-start;
+        gap: 12px 18px;
+      }
+
+      .fp-proof-item { font-size: 10px; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      *,
+      *::before,
+      *::after {
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+        animation-duration: .01ms !important;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <header class="fp-nav">
+    <div class="fp-container fp-nav-inner">
+      <a class="fp-brand" href="https://fenixpace.space" aria-label="Fenixpace home">
+        <img src="https://res.cloudinary.com/de6ugcwgm/image/upload/v1794849952/logo_b018zu.jpg" alt="Fenixpace logo">
+        <span class="fp-brand-name">Fenixpace</span>
+      </a>
+
+      <nav class="fp-nav-links" id="fpNavLinks" aria-label="Main navigation">
+        <a href="#features">Features</a>
+        <a href="#how-it-works">How it works</a>
+        <a href="#plans">Plans</a>
+        <a href="#faq">FAQ</a>
+      </nav>
+
+      <div class="fp-nav-actions">
+        <a class="fp-nav-login" href="{{ signup_url }}">Sign in</a>
+        <a class="fp-button fp-button-dark" href="{{ signup_url }}">Get started <span class="fp-arrow">↗</span></a>
+        <button class="fp-menu-button" id="fpMenuButton" type="button" aria-label="Open navigation" aria-expanded="false" aria-controls="fpNavLinks">
+          <svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round">
+            <path d="M4 7h16M4 12h16M4 17h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <section class="fp-hero">
+      <div class="fp-container fp-hero-grid">
+        <div class="fp-hero-copy">
+          <span class="fp-eyebrow">A space to grow, consistently</span>
+          <h1>Make room for <span>what matters.</span></h1>
+          <p>Fenixpace brings your plans, commitments, and progress into one intentional space. Make your time count, build consistency, and grow alongside people moving in the same direction.</p>
+
+          <div class="fp-hero-actions">
+            <a class="fp-button fp-button-primary" href="https://fenixpace.space">Create your free account <span class="fp-arrow">↗</span></a>
+            <a class="fp-button fp-button-outline" href="#features">Explore Fenixpace <span class="fp-arrow">↓</span></a>
+          </div>
+
+          <div class="fp-hero-footnote">
+            <span></span> Free to join
+            <span></span> Core productivity tools included
+            <span></span> Optional supporter memberships
+          </div>
+        </div>
+
+        <div class="fp-preview-wrap" aria-label="Illustrative preview of a Fenixpace workspace">
+          <div class="fp-preview-glow"></div>
+
+          <div class="fp-preview">
+            <div class="fp-preview-top">
+              <div class="fp-preview-brand">
+                <span class="fp-preview-mark">F</span>
+                Your Fenixpace
+              </div>
+              <span class="fp-preview-date">MY WORKSPACE · TODAY</span>
+            </div>
+
+            <div class="fp-preview-greeting">
+              <small>A little progress adds up.</small>
+              <h3>Your day, with intention.</h3>
+            </div>
+
+            <div class="fp-preview-grid">
+              <div class="fp-mini-card">
+                <div class="fp-mini-label">Today's priorities</div>
+                <div class="fp-mini-value">03</div>
+                <div class="fp-mini-note">Keep your focus clear</div>
+                <div class="fp-progress-track">
+                  <div class="fp-progress-fill" style="width:68%"></div>
+                </div>
+              </div>
+
+              <div class="fp-mini-card">
+                <div class="fp-mini-label">Commitments</div>
+                <div class="fp-mini-value">02 / 03</div>
+                <div class="fp-mini-note">One step at a time</div>
+                <div class="fp-progress-track">
+                  <div class="fp-progress-fill" style="width:66%"></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="fp-preview-tasklist">
+              <div class="fp-preview-task-head">
+                <strong>Today's focus</strong>
+                <span>Sample workspace</span>
+              </div>
+
+              <div class="fp-preview-task">
+                <span class="fp-check done">✓</span>
+                <span class="fp-task-text done">Review weekly priorities</span>
+                <span class="fp-task-tag">Done</span>
+              </div>
+
+              <div class="fp-preview-task">
+                <span class="fp-check"></span>
+                <span class="fp-task-text">Work on a meaningful project</span>
+                <span class="fp-task-tag">Focus</span>
+              </div>
+
+              <div class="fp-preview-task">
+                <span class="fp-check"></span>
+                <span class="fp-task-text">Make time to learn</span>
+                <span class="fp-task-tag">Personal</span>
+              </div>
+            </div>
+
+            <div class="fp-preview-bottom">
+              <span>Consistency is built one day at a time.</span>
+              <b>Keep going →</b>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fp-proof-strip" aria-label="Fenixpace principles">
+      <div class="fp-container fp-proof-inner">
+        <span class="fp-proof-item"><i class="fp-proof-dot"></i> Plan with intention</span>
+        <span class="fp-proof-item"><i class="fp-proof-dot"></i> Keep your commitments</span>
+        <span class="fp-proof-item"><i class="fp-proof-dot"></i> Track your consistency</span>
+        <span class="fp-proof-item"><i class="fp-proof-dot"></i> Grow with others</span>
+      </div>
+    </section>
+
+    <section class="fp-section fp-features" id="features">
+      <div class="fp-container">
+        <div class="fp-section-heading">
+          <span class="fp-eyebrow">Built around your progress</span>
+          <h2>Less noise. More meaningful progress.</h2>
+          <p>Fenixpace gives you practical tools to turn good intentions into actions you can return to—without making the tools themselves another distraction.</p>
+        </div>
+
+        <div class="fp-feature-grid">
+          <article class="fp-feature-card">
+            <div class="fp-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="4" width="18" height="17" rx="2"/>
+                <path d="M16 2v4M8 2v4M3 9h18M8 13h3M8 17h7"/>
+              </svg>
+            </div>
+            <h3>Plan with intention</h3>
+            <p>Bring your priorities and plans together, decide what deserves your attention, and give your next steps a clearer direction.</p>
+          </article>
+
+          <article class="fp-feature-card">
+            <div class="fp-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="12" cy="12" r="9"/>
+                <path d="m8 12 2.5 2.5L16.5 8.5"/>
+              </svg>
+            </div>
+            <h3>Keep your commitments</h3>
+            <p>Turn intentions into actions you can follow through on. Keep the important things visible and make progress manageable.</p>
+          </article>
+
+          <article class="fp-feature-card">
+            <div class="fp-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 19V5M4 19h17"/>
+                <path d="m7 15 4-4 3 2 5-6"/>
+                <path d="M16 7h3v3"/>
+              </svg>
+            </div>
+            <h3>See your consistency</h3>
+            <p>Pay attention to the effort you put in over time. Build a clearer picture of your follow-through, not just your to-do list.</p>
+          </article>
+
+          <article class="fp-feature-card">
+            <div class="fp-feature-icon">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                <circle cx="10" cy="7" r="4"/>
+                <path d="M20 8v6M23 11h-6"/>
+              </svg>
+            </div>
+            <h3>Grow alongside others</h3>
+            <p>Connect with people, share updates, and take part in a community where progress and learning have room to happen.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="fp-section fp-how" id="how-it-works">
+      <div class="fp-container">
+        <div class="fp-section-heading">
+          <span class="fp-eyebrow">A simple place to begin</span>
+          <h2>Start small. Keep moving.</h2>
+          <p>You don't need a perfect system or a perfect day. Start with what matters, then build a rhythm that works for you.</p>
+        </div>
+
+        <div class="fp-steps">
+          <article class="fp-step">
+            <span class="fp-step-number">01</span>
+            <h3>Create your free account</h3>
+            <p>Join Fenixpace and set up your own space. The core productivity and social experience is available without a paid membership.</p>
+          </article>
+
+          <article class="fp-step">
+            <span class="fp-step-number">02</span>
+            <h3>Make a plan that matters</h3>
+            <p>Bring your priorities and commitments into focus. Give yourself clear next steps instead of an overwhelming list.</p>
+          </article>
+
+          <article class="fp-step">
+            <span class="fp-step-number">03</span>
+            <h3>Build consistency over time</h3>
+            <p>Return to your commitments, notice your progress, and keep learning alongside the people you connect with.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="fp-section fp-plans" id="plans">
+      <div class="fp-container">
+        <div class="fp-section-heading">
+          <span class="fp-eyebrow">Straightforward memberships</span>
+          <h2>The core stays free.</h2>
+          <p>Use Fenixpace without a subscription. Supporter memberships are optional and add recognition and a small number of additional benefits.</p>
+        </div>
+
+        <p class="fp-plan-intro">Sign up to access the core experience. Choose a supporter membership later only if it makes sense for you.</p>
+
+        <div class="fp-plans-layout">
+          <article class="fp-free-card">
+            <div class="fp-free-card-top">
+              <div>
+                <span class="fp-plan-badge">Start here</span>
+                <h3 style="margin-top:13px">Free account</h3>
+                <div class="fp-free-price">$0</div>
+                <div class="fp-free-sub">No paid membership required</div>
+              </div>
+
+              <div class="fp-feature-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 3v18M3 12h18"/>
+                </svg>
+              </div>
+            </div>
+
+            <ul class="fp-plan-list">
+              <li>
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg>
+                Planning and priorities
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg>
+                Commitments and consistency tracking
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg>
+                Core social features
+              </li>
+              <li>
+                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg>
+                Access to the core Fenixpace experience
+              </li>
+            </ul>
+
+            <a class="fp-button fp-button-dark" href="https://fenixpace.space">
+              Create a free account <span class="fp-arrow">↗</span>
+            </a>
+          </article>
+
+          <article class="fp-support-card">
+            <div class="fp-support-head">
+              <div>
+                <h3>Optional supporter memberships</h3>
+                <p>Help support the continued development of Fenixpace and receive the benefits associated with your membership.</p>
+              </div>
+              <span class="fp-plan-badge">Monthly plans</span>
+            </div>
+
+            <div class="fp-support-tiers">
+              <div class="fp-tier">
+                <div class="fp-tier-label">Silver tier</div>
+                <h4>Early Supporter</h4>
+                <p>Supporter badge and recognition across the platform.</p>
+                <a class="fp-tier-link" href="https://fenixpace.space/support">View details <span>↗</span></a>
+              </div>
+
+              <div class="fp-tier">
+                <div class="fp-tier-label">Golden tier</div>
+                <h4>Power Supporter</h4>
+                <p>Everything in Early Supporter, plus an ad-free experience and more visible recognition.</p>
+                <a class="fp-tier-link" href="https://fenixpace.space/support">View details <span>↗</span></a>
+              </div>
+
+              <div class="fp-tier">
+                <div class="fp-tier-label">Creator / Ruby tier</div>
+                <h4>Family Member</h4>
+                <p>Everything in Power Supporter, plus course submissions to Grow for review.</p>
+                <a class="fp-tier-link" href="https://fenixpace.space/support">View details <span>↗</span></a>
+              </div>
+            </div>
+
+            <p class="fp-plan-footnote">Current prices, payment options, and checkout are shown on the Support page. Supporter memberships are optional; they are not required to use the core tools.</p>
+          </article>
+        </div>
+
+        <div class="fp-comparison-wrap">
+          <div class="fp-comparison-title">What's included in each option?</div>
+
+          <div class="fp-table-scroll">
+            <table class="fp-comparison">
+              <thead>
+                <tr>
+                  <th scope="col">Feature</th>
+                  <th scope="col">Free account</th>
+                  <th scope="col">Early Supporter</th>
+                  <th scope="col">Power Supporter</th>
+                  <th scope="col">Family Member</th>
+                </tr>
+              </thead>
+
+              <tbody>
+                <tr>
+                  <td>Planning, commitments, consistency tools</td>
+                  <td class="fp-yes">✓</td>
+                  <td class="fp-yes">✓</td>
+                  <td class="fp-yes">✓</td>
+                  <td class="fp-yes">✓</td>
+                </tr>
+                <tr>
+                  <td>Core social features</td>
+                  <td class="fp-yes">✓</td>
+                  <td class="fp-yes">✓</td>
+                  <td class="fp-yes">✓</td>
+                  <td class="fp-yes">✓</td>
+                </tr>
+                <tr>
+                  <td>Supporter badge</td>
+                  <td class="fp-no">—</td>
+                  <td class="fp-yes">✓</td>
+                  <td class="fp-yes">✓</td>
+                  <td class="fp-yes">✓</td>
+                </tr>
+                <tr>
+                  <td>Recognition</td>
+                  <td class="fp-no">—</td>
+                  <td>Supporter</td>
+                  <td>More visible</td>
+                  <td>Even more</td>
+                </tr>
+                <tr>
+                  <td>Ad-free experience</td>
+                  <td class="fp-no">—</td>
+                  <td class="fp-no">—</td>
+                  <td class="fp-yes">✓</td>
+                  <td class="fp-yes">✓</td>
+                </tr>
+                <tr>
+                  <td>Submit courses to Grow for review</td>
+                  <td class="fp-no">—</td>
+                  <td class="fp-no">—</td>
+                  <td class="fp-no">—</td>
+                  <td class="fp-yes">✓</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="fp-section fp-faq" id="faq">
+      <div class="fp-container">
+        <div class="fp-section-heading">
+          <span class="fp-eyebrow">Good to know</span>
+          <h2>Frequently asked questions</h2>
+          <p>A few straightforward answers before you get started.</p>
+        </div>
+
+        <div class="fp-faq-list">
+          <details class="fp-faq-item">
+            <summary>Do I need to pay to use Fenixpace?</summary>
+            <p>No. You can create a free account and use the core Fenixpace experience, including planning, commitments, consistency tracking, and social features. Supporter memberships are optional.</p>
+          </details>
+
+          <details class="fp-faq-item">
+            <summary>What do the supporter memberships add?</summary>
+            <p>Early Supporter adds a supporter badge and recognition. Power Supporter includes those benefits and removes ads. Family Member includes the Power Supporter benefits and lets you submit courses to Grow for review.</p>
+          </details>
+
+          <details class="fp-faq-item">
+            <summary>Where can I see the current prices?</summary>
+            <p>Visit the <a href="https://fenixpace.space/support" style="color:var(--fp-green);font-weight:700">Support page</a> for current monthly prices and checkout options. This landing page does not process payments.</p>
+          </details>
+
+          <details class="fp-faq-item">
+            <summary>How can I contact Fenixpace?</summary>
+            <p>
+              You can email us at
+              <a href="mailto:support@fenixpace.space" style="color:var(--fp-green);font-weight:700">support@fenixpace.space</a>
+              or call us at
+              <a href="tel:+201200738657" style="color:var(--fp-green);font-weight:700">+201200738657</a>.
+              You can also visit our <a href="https://fenixpace.space/contact" style="color:var(--fp-green);font-weight:700">Contact us</a> page.
+            </p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="fp-final-cta">
+      <div class="fp-container fp-final-inner">
+        <div>
+          <h2>Your next step doesn't need to be a big one.</h2>
+          <p>Start with a free account. Build from there, at your own pace.</p>
+        </div>
+
+        <a class="fp-button fp-button-primary" href="https://fenixpace.space">
+          Get started for free <span class="fp-arrow">↗</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer class="fp-footer">
+    <div class="fp-container">
+      <div class="fp-footer-main">
+
+        <!-- Brand -->
+        <div class="fp-footer-brand">
+          <a class="fp-brand" href="https://fenixpace.space/" aria-label="Fenixpace home">
+            <img src="https://res.cloudinary.com/de6ugcwgm/image/upload/v1794849952/logo_b018zu.jpg" alt="Fenixpace logo" width="38" height="38">
+            <span class="fp-brand-name">Fenixpace</span>
+          </a>
+
+          <p>A space to grow, consistently. Plan intentionally, follow through, and make room for what matters.</p>
+        </div>
+
+        <!-- Contact information -->
+        <div class="fp-footer-contact" aria-label="Contact information">
+          <h3 class="fp-footer-heading">Get in touch</h3>
+
+          <a
+            class="fp-footer-contact-item"
+            href="mailto:support@fenixpace.space"
+            aria-label="Email Fenixpace at support@fenixpace.space"
+          >
+            <span class="fp-footer-contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <rect x="3" y="5" width="18" height="14" rx="2"/>
+                <path d="m3 7 9 6 9-6"/>
+              </svg>
+            </span>
+
+            <span class="fp-footer-contact-text">
+              <span class="fp-footer-contact-label">Email</span>
+              <span>support@fenixpace.space</span>
+            </span>
+          </a>
+
+          <a
+            class="fp-footer-contact-item"
+            href="tel:+201200738657"
+            aria-label="Call Fenixpace at +201200738657"
+          >
+            <span class="fp-footer-contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.8 19.8 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.12 4.2 2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.12.96.36 1.9.7 2.8a2 2 0 0 1-.45 2.1L8.1 9.87a16 16 0 0 0 6 6l1.26-1.26a2 2 0 0 1 2.1-.45c.9.34 1.84.58 2.8.7a2 2 0 0 1 1.74 2.06z"/>
+              </svg>
+            </span>
+
+            <span class="fp-footer-contact-text">
+              <span class="fp-footer-contact-label">Phone</span>
+              <span>+201200738657</span>
+            </span>
+          </a>
+
+          <a
+            class="fp-footer-contact-item"
+            href="https://www.google.com/maps/search/?api=1&query=Cairo%2C%20Egypt"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Find Fenixpace in Cairo, Egypt on Google Maps"
+          >
+            <span class="fp-footer-contact-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/>
+                <circle cx="12" cy="10" r="2.5"/>
+              </svg>
+            </span>
+
+            <span class="fp-footer-contact-text">
+              <span class="fp-footer-contact-label">Location</span>
+              <span>Cairo, Egypt</span>
+            </span>
+          </a>
+        </div>
+
+        <!-- Footer navigation -->
+        <nav class="fp-footer-links" aria-label="Footer navigation">
+          <a href="/about">About us</a>
+          <a href="/contact">Contact us</a>
+          <a href="/support">Supporter memberships</a>
+          <a href="/refund-policy">Refund Policy</a>
+          <a href="https://fenixpace.space">Sign in</a>
+        </nav>
+
+      </div>
+
+      <div class="fp-footer-bottom">
+        <span>© 2026/2027 Fenixpace. All rights reserved.</span>
+        <span>Core productivity tools remain free to use.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    (() => {
+      const menuButton = document.getElementById('fpMenuButton');
+      const navLinks = document.getElementById('fpNavLinks');
+
+      if (!menuButton || !navLinks) return;
+
+      const closeMenu = () => {
+        navLinks.classList.remove('is-open');
+        menuButton.setAttribute('aria-expanded', 'false');
+        menuButton.setAttribute('aria-label', 'Open navigation');
+      };
+
+      menuButton.addEventListener('click', () => {
+        const isOpen = navLinks.classList.toggle('is-open');
+
+        menuButton.setAttribute('aria-expanded', String(isOpen));
+        menuButton.setAttribute(
+          'aria-label',
+          isOpen ? 'Close navigation' : 'Open navigation'
+        );
+      });
+
+      navLinks.querySelectorAll('a').forEach((link) => {
+        link.addEventListener('click', closeMenu);
+      });
+
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') closeMenu();
+      });
+
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 760) closeMenu();
+      });
+    })();
+  </script>
+</body>
+</html>
