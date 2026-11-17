@@ -1021,7 +1021,427 @@
       color: #9ca3af;
       font-size: 9px;
     }
+    /* Pricing section */
+    .fp-plan-free-banner {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      margin-bottom: 35px;
+      padding: 23px 26px;
+      border: 1px solid #f1e3d9;
+      border-radius: 16px;
+      background: linear-gradient(110deg, #fff 0%, #fff8f3 100%);
+      box-shadow: 0 3px 12px rgba(0,0,0,.025);
+    }
 
+    .fp-free-banner-copy {
+      min-width: 0;
+    }
+
+    .fp-free-banner-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      color: var(--fp-green);
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .1em;
+      text-transform: uppercase;
+    }
+
+    .fp-free-banner-label::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--fp-green);
+    }
+
+    .fp-free-banner-copy h3 {
+      margin: 9px 0 5px;
+      font-size: 18px;
+      font-weight: 700;
+      letter-spacing: -.035em;
+    }
+
+    .fp-free-banner-copy p {
+      max-width: 600px;
+      margin: 0;
+      color: var(--fp-muted);
+      font-size: 11px;
+      line-height: 1.75;
+    }
+
+    .fp-free-banner-points {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 9px 15px;
+      margin-top: 13px;
+    }
+
+    .fp-free-banner-points span {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      color: #59616b;
+      font-size: 10px;
+      font-weight: 600;
+    }
+
+    .fp-free-banner-points span::before {
+      content: '✓';
+      color: var(--fp-green);
+      font-size: 12px;
+      font-weight: 800;
+    }
+
+    .fp-free-banner-action {
+      flex-shrink: 0;
+    }
+
+    /* Currency selector */
+    .fp-pricing-controls {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .fp-pricing-rate {
+      color: #89919b;
+      font-size: 10px;
+    }
+
+    .fp-currency-switch {
+      display: inline-flex;
+      align-items: center;
+      gap: 3px;
+      padding: 4px;
+      border: 1px solid #e5e7eb;
+      border-radius: 11px;
+      background: #fff;
+    }
+
+    .fp-currency-button {
+      min-width: 53px;
+      padding: 8px 11px;
+      border: 0;
+      border-radius: 8px;
+      color: #6b7280;
+      background: transparent;
+      font-size: 10px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: color .18s ease, background .18s ease, box-shadow .18s ease;
+    }
+
+    .fp-currency-button:hover {
+      color: var(--fp-green);
+    }
+
+    .fp-currency-button.is-active {
+      color: #fff;
+      background: var(--fp-green);
+      box-shadow: 0 2px 6px rgba(239,119,34,.18);
+    }
+
+    /* Pricing cards */
+    .fp-pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      align-items: stretch;
+    }
+
+    .fp-pricing-card {
+      position: relative;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+      padding: 25px;
+      border: 1px solid #e9ecef;
+      border-radius: 17px;
+      background: #fff;
+      box-shadow: var(--fp-shadow);
+      transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+    }
+
+    .fp-pricing-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(0,0,0,.07);
+    }
+
+    .fp-pricing-card.is-featured {
+      border-color: #f2c5a7;
+      box-shadow: 0 7px 25px rgba(239,119,34,.085);
+    }
+
+    .fp-pricing-card.is-featured::before {
+      content: '';
+      position: absolute;
+      top: -1px;
+      left: 25px;
+      right: 25px;
+      height: 3px;
+      border-radius: 0 0 5px 5px;
+      background: linear-gradient(90deg, var(--fp-green), var(--fp-green-bright));
+    }
+
+    .fp-pricing-card-top {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 12px;
+    }
+
+    .fp-pricing-tier {
+      color: #929aa4;
+      font-size: 9px;
+      font-weight: 800;
+      letter-spacing: .12em;
+      text-transform: uppercase;
+    }
+
+    .fp-pricing-card h3 {
+      margin: 10px 0 0;
+      font-size: 19px;
+      font-weight: 700;
+      letter-spacing: -.035em;
+    }
+
+    .fp-plan-icon {
+      display: grid;
+      place-items: center;
+      width: 39px;
+      height: 39px;
+      flex-shrink: 0;
+      border-radius: 11px;
+      color: var(--fp-green);
+      background: #fff4ec;
+    }
+
+    .fp-plan-icon svg {
+      width: 19px;
+      height: 19px;
+    }
+
+    .fp-pricing-card:nth-child(2) .fp-plan-icon {
+      color: #fff;
+      background: var(--fp-green);
+    }
+
+    .fp-pricing-card:nth-child(3) .fp-plan-icon {
+      color: var(--fp-blue);
+      background: #eef9fd;
+    }
+
+    .fp-pricing-badge {
+      position: absolute;
+      top: 20px;
+      right: 69px;
+      padding: 5px 8px;
+      border-radius: 99px;
+      color: #c65f19;
+      background: #fff4ec;
+      font-size: 8px;
+      font-weight: 800;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+    }
+
+    .fp-pricing-price {
+      display: flex;
+      align-items: baseline;
+      flex-wrap: wrap;
+      gap: 7px;
+      margin-top: 27px;
+    }
+
+    .fp-price-amount {
+      color: var(--fp-ink);
+      font-size: clamp(28px, 3vw, 36px);
+      font-weight: 800;
+      line-height: 1.1;
+      letter-spacing: -.06em;
+    }
+
+    .fp-pricing-period {
+      color: #89919b;
+      font-size: 11px;
+    }
+
+    .fp-pricing-description {
+      min-height: 39px;
+      margin: 9px 0 0;
+      color: var(--fp-muted);
+      font-size: 11px;
+      line-height: 1.7;
+    }
+
+    .fp-pricing-divider {
+      height: 1px;
+      margin: 19px 0;
+      background: #eef0f2;
+    }
+
+    .fp-pricing-features {
+      display: grid;
+      gap: 17px;
+      margin: 0 0 25px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .fp-pricing-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+
+    .fp-pricing-feature-icon {
+      display: grid;
+      place-items: center;
+      width: 26px;
+      height: 26px;
+      flex-shrink: 0;
+      border-radius: 8px;
+      color: var(--fp-green);
+      background: #fff4ec;
+      font-size: 13px;
+      font-weight: 800;
+    }
+
+    .fp-pricing-card:nth-child(3) .fp-pricing-feature-icon {
+      color: var(--fp-blue);
+      background: #eef9fd;
+    }
+
+    .fp-pricing-feature-copy {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+      padding-top: 2px;
+    }
+
+    .fp-pricing-feature-copy strong {
+      color: #30343a;
+      font-size: 11px;
+      font-weight: 700;
+    }
+
+    .fp-pricing-feature-copy small {
+      color: var(--fp-muted);
+      font-size: 10px;
+      line-height: 1.65;
+    }
+
+    .fp-pricing-button {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      width: 100%;
+      min-height: 43px;
+      margin-top: auto;
+      padding: 0 14px;
+      border: 1px solid #e5e7eb;
+      border-radius: 9px;
+      color: #374151;
+      background: #fff;
+      font-size: 11px;
+      font-weight: 700;
+      transition: all .18s ease;
+    }
+
+    .fp-pricing-button:hover {
+      color: var(--fp-green);
+      border-color: #f2c5a7;
+      background: #fffaf6;
+    }
+
+    .fp-pricing-card.is-featured .fp-pricing-button {
+      color: #fff;
+      border-color: var(--fp-green);
+      background: var(--fp-green);
+    }
+
+    .fp-pricing-card.is-featured .fp-pricing-button:hover {
+      border-color: var(--fp-green-deep);
+      background: var(--fp-green-deep);
+    }
+
+    .fp-pricing-button span {
+      font-size: 15px;
+    }
+
+    .fp-pricing-footnote {
+      margin: 18px 0 0;
+      color: #929aa4;
+      font-size: 10px;
+      line-height: 1.7;
+    }
+
+    /* Pricing responsive layouts */
+    @media (max-width: 900px) {
+      .fp-pricing-grid {
+        grid-template-columns: 1fr;
+        max-width: 620px;
+        margin-inline: auto;
+      }
+
+      .fp-pricing-card {
+        min-height: auto;
+      }
+
+      .fp-pricing-description {
+        min-height: 0;
+      }
+
+      .fp-pricing-card.is-featured {
+        order: -1;
+      }
+    }
+
+    @media (max-width: 540px) {
+      .fp-plan-free-banner {
+        align-items: stretch;
+        flex-direction: column;
+        padding: 21px;
+      }
+
+      .fp-free-banner-action,
+      .fp-free-banner-action .fp-button {
+        width: 100%;
+      }
+
+      .fp-pricing-controls {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 11px;
+      }
+
+      .fp-pricing-card {
+        padding: 22px;
+      }
+
+      .fp-pricing-badge {
+        right: 65px;
+      }
+
+      .fp-price-amount {
+        font-size: 34px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .fp-pricing-card,
+      .fp-currency-button,
+      .fp-pricing-button {
+        transition: none;
+      }
+    }
     /* Responsive layouts */
     @media (max-width: 980px) {
       .fp-hero-grid {
@@ -1403,153 +1823,346 @@
 
     <section class="fp-section fp-plans" id="plans">
       <div class="fp-container">
+
         <div class="fp-section-heading">
           <span class="fp-eyebrow">Straightforward memberships</span>
           <h2>The core stays free.</h2>
-          <p>Use Fenixpace without a subscription. Supporter memberships are optional and add recognition and a small number of additional benefits.</p>
+          <p>
+            Fenixpace is built to make meaningful progress accessible.
+            Join for free, explore the experience, and support the project
+            through an optional membership whenever you're ready.
+          </p>
         </div>
 
-        <p class="fp-plan-intro">Sign up to access the core experience. Choose a supporter membership later only if it makes sense for you.</p>
+        <!-- Free account -->
+        <div class="fp-plan-free-banner">
+          <div class="fp-free-banner-copy">
+            <span class="fp-free-banner-label">Free account · Always available</span>
+            <h3>Everything you need to get started.</h3>
+            <p>
+              Create your space and start planning, following through,
+              tracking your consistency, and connecting with others.
+              No subscription required.
+            </p>
 
-        <div class="fp-plans-layout">
-          <article class="fp-free-card">
-            <div class="fp-free-card-top">
+            <div class="fp-free-banner-points">
+              <span>Planning and priorities</span>
+              <span>Commitments and consistency</span>
+              <span>Core social features</span>
+              <span>Access to Fenixpace</span>
+            </div>
+          </div>
+
+          <div class="fp-free-banner-action">
+            <a class="fp-button fp-button-dark" href="https://fenixpace.space">
+              Create a free account <span class="fp-arrow">↗</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Currency selector -->
+        <div class="fp-pricing-controls">
+          <span class="fp-pricing-rate">
+            Latest available rate: 1 USD ≈ 53.60 EGP
+          </span>
+
+          <div class="fp-currency-switch" role="group" aria-label="Choose display currency">
+            <button
+              class="fp-currency-button is-active"
+              type="button"
+              data-currency="EGP"
+              aria-pressed="true"
+            >
+              EGP
+            </button>
+
+            <button
+              class="fp-currency-button"
+              type="button"
+              data-currency="USD"
+              aria-pressed="false"
+            >
+              USD
+            </button>
+          </div>
+        </div>
+
+        <!-- Paid memberships -->
+        <div class="fp-pricing-grid">
+
+          <!-- Early Supporter -->
+          <article class="fp-pricing-card">
+            <div class="fp-pricing-card-top">
               <div>
-                <span class="fp-plan-badge">Start here</span>
-                <h3 style="margin-top:13px">Free account</h3>
-                <div class="fp-free-price">$0</div>
-                <div class="fp-free-sub">No paid membership required</div>
+                <span class="fp-pricing-tier">Silver tier</span>
+                <h3>Early Supporter</h3>
               </div>
 
-              <div class="fp-feature-icon" aria-hidden="true">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round">
-                  <path d="M12 3v18M3 12h18"/>
+              <div class="fp-plan-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="M12 21v-8"/>
+                  <path d="M12 13C5 13 4 8 4 5c5 0 8 2 8 8Z"/>
+                  <path d="M12 16c0-5 3-8 8-8 0 4-2 8-8 8Z"/>
                 </svg>
               </div>
             </div>
 
-            <ul class="fp-plan-list">
+            <div class="fp-pricing-price">
+              <span
+                class="fp-price-amount"
+                data-egp="100"
+                data-usd="1.87"
+                aria-live="polite"
+              >EGP 100</span>
+              <span class="fp-pricing-period">/ month</span>
+            </div>
+
+            <p class="fp-pricing-description">
+              A small way to support the mission and earn recognition.
+            </p>
+
+            <div class="fp-pricing-divider"></div>
+
+            <ul class="fp-pricing-features">
               <li>
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg>
-                Planning and priorities
+                <span class="fp-pricing-feature-icon">✓</span>
+                <span class="fp-pricing-feature-copy">
+                  <strong>Supporter badge</strong>
+                  <small>Show that you're part of the people supporting Fenixpace.</small>
+                </span>
               </li>
+
               <li>
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg>
-                Commitments and consistency tracking
-              </li>
-              <li>
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg>
-                Core social features
-              </li>
-              <li>
-                <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="2"><path d="m4 10 4 4 8-8"/></svg>
-                Access to the core Fenixpace experience
+                <span class="fp-pricing-feature-icon">★</span>
+                <span class="fp-pricing-feature-copy">
+                  <strong>Recognition</strong>
+                  <small>Your support is recognized throughout the platform.</small>
+                </span>
               </li>
             </ul>
 
-            <a class="fp-button fp-button-dark" href="https://fenixpace.space">
-              Create a free account <span class="fp-arrow">↗</span>
+            <a class="fp-pricing-button" href="https://fenixpace.space/support">
+              Choose Early Supporter <span>→</span>
             </a>
           </article>
 
-          <article class="fp-support-card">
-            <div class="fp-support-head">
+          <!-- Power Supporter -->
+          <article class="fp-pricing-card is-featured">
+            <span class="fp-pricing-badge">Supporter</span>
+
+            <div class="fp-pricing-card-top">
               <div>
-                <h3>Optional supporter memberships</h3>
-                <p>Help support the continued development of Fenixpace and receive the benefits associated with your membership.</p>
-              </div>
-              <span class="fp-plan-badge">Monthly plans</span>
-            </div>
-
-            <div class="fp-support-tiers">
-              <div class="fp-tier">
-                <div class="fp-tier-label">Silver tier</div>
-                <h4>Early Supporter</h4>
-                <p>Supporter badge and recognition across the platform.</p>
-                <a class="fp-tier-link" href="https://fenixpace.space/support">View details <span>↗</span></a>
+                <span class="fp-pricing-tier">Golden tier</span>
+                <h3>Power Supporter</h3>
               </div>
 
-              <div class="fp-tier">
-                <div class="fp-tier-label">Golden tier</div>
-                <h4>Power Supporter</h4>
-                <p>Everything in Early Supporter, plus an ad-free experience and more visible recognition.</p>
-                <a class="fp-tier-link" href="https://fenixpace.space/support">View details <span>↗</span></a>
-              </div>
-
-              <div class="fp-tier">
-                <div class="fp-tier-label">Creator / Ruby tier</div>
-                <h4>Family Member</h4>
-                <p>Everything in Power Supporter, plus course submissions to Grow for review.</p>
-                <a class="fp-tier-link" href="https://fenixpace.space/support">View details <span>↗</span></a>
+              <div class="fp-plan-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m13 2-3 9h7l-6 11 2-9H6l7-11Z"/>
+                </svg>
               </div>
             </div>
 
-            <p class="fp-plan-footnote">Current prices, payment options, and checkout are shown on the Go-Premium page. Supporter memberships are optional; they are not required to use the core tools.</p>
+            <div class="fp-pricing-price">
+              <span
+                class="fp-price-amount"
+                data-egp="250"
+                data-usd="4.66"
+                aria-live="polite"
+              >EGP 250</span>
+              <span class="fp-pricing-period">/ month</span>
+            </div>
+
+            <p class="fp-pricing-description">
+              Support the project while enjoying a more focused experience.
+            </p>
+
+            <div class="fp-pricing-divider"></div>
+
+            <ul class="fp-pricing-features">
+              <li>
+                <span class="fp-pricing-feature-icon">✓</span>
+                <span class="fp-pricing-feature-copy">
+                  <strong>Everything in Micro</strong>
+                  <small>Includes the benefits of the entry-level supporter membership.</small>
+                </span>
+              </li>
+
+              <li>
+                <span class="fp-pricing-feature-icon">⊘</span>
+                <span class="fp-pricing-feature-copy">
+                  <strong>No ads</strong>
+                  <small>Keep your Fenixpace experience focused and uninterrupted.</small>
+                </span>
+              </li>
+
+              <li>
+                <span class="fp-pricing-feature-icon">★</span>
+                <span class="fp-pricing-feature-copy">
+                  <strong>More recognition</strong>
+                  <small>A more visible supporter presence across Fenixpace.</small>
+                </span>
+              </li>
+            </ul>
+
+            <a class="fp-pricing-button" href="https://fenixpace.space/support">
+              Become a Power Supporter <span>→</span>
+            </a>
           </article>
-        </div>
 
+          <!-- Family Member -->
+          <article class="fp-pricing-card">
+            <div class="fp-pricing-card-top">
+              <div>
+                <span class="fp-pricing-tier">Creator · Ruby tier</span>
+                <h3>Family Member</h3>
+              </div>
+
+              <div class="fp-plan-icon" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor"
+                  stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                  <path d="m3 9 9-5 9 5-9 5-9-5Z"/>
+                  <path d="M7 11.2V16c3.2 2.7 6.8 2.7 10 0v-4.8"/>
+                  <path d="M21 9v6"/>
+                </svg>
+              </div>
+            </div>
+
+            <div class="fp-pricing-price">
+              <span
+                class="fp-price-amount"
+                data-egp="500"
+                data-usd="9.33"
+                aria-live="polite"
+              >EGP 500</span>
+              <span class="fp-pricing-period">/ month</span>
+            </div>
+
+            <p class="fp-pricing-description">
+              For people deeply involved in the Fenixpace ecosystem.
+            </p>
+
+            <div class="fp-pricing-divider"></div>
+
+            <ul class="fp-pricing-features">
+              <li>
+                <span class="fp-pricing-feature-icon">✓</span>
+                <span class="fp-pricing-feature-copy">
+                  <strong>Everything in Standard</strong>
+                  <small>Includes the benefits of the standard membership.</small>
+                </span>
+              </li>
+
+              <li>
+                <span class="fp-pricing-feature-icon">✎</span>
+                <span class="fp-pricing-feature-copy">
+                  <strong>Submit courses</strong>
+                  <small>Submit your own courses to Grow for review.</small>
+                </span>
+              </li>
+
+              <li>
+                <span class="fp-pricing-feature-icon">★</span>
+                <span class="fp-pricing-feature-copy">
+                  <strong>Even more recognition</strong>
+                  <small>Stand out as one of the people helping build Fenixpace.</small>
+                </span>
+              </li>
+
+              <li>
+                <span class="fp-pricing-feature-icon">✓</span>
+                <span class="fp-pricing-feature-copy">
+                  <strong>Course review</strong>
+                  <small>Courses are reviewed before appearing on Grow.</small>
+                </span>
+              </li>
+            </ul>
+
+            <a class="fp-pricing-button" href="https://fenixpace.space/support">
+              Join as a Family Member <span>→</span>
+            </a>
+          </article>
+
+        </div>
         <div class="fp-comparison-wrap">
-          <div class="fp-comparison-title">What's included in each option?</div>
-
-          <div class="fp-table-scroll">
-            <table class="fp-comparison">
-              <thead>
-                <tr>
-                  <th scope="col">Feature</th>
-                  <th scope="col">Free account</th>
-                  <th scope="col">Early Supporter</th>
-                  <th scope="col">Power Supporter</th>
-                  <th scope="col">Family Member</th>
-                </tr>
-              </thead>
-
-              <tbody>
-                <tr>
-                  <td>Planning, commitments, consistency tools</td>
-                  <td class="fp-yes">✓</td>
-                  <td class="fp-yes">✓</td>
-                  <td class="fp-yes">✓</td>
-                  <td class="fp-yes">✓</td>
-                </tr>
-                <tr>
-                  <td>Core social features</td>
-                  <td class="fp-yes">✓</td>
-                  <td class="fp-yes">✓</td>
-                  <td class="fp-yes">✓</td>
-                  <td class="fp-yes">✓</td>
-                </tr>
-                <tr>
-                  <td>Supporter badge</td>
-                  <td class="fp-no">—</td>
-                  <td class="fp-yes">✓</td>
-                  <td class="fp-yes">✓</td>
-                  <td class="fp-yes">✓</td>
-                </tr>
-                <tr>
-                  <td>Recognition</td>
-                  <td class="fp-no">—</td>
-                  <td>Supporter</td>
-                  <td>More visible</td>
-                  <td>Even more</td>
-                </tr>
-                <tr>
-                  <td>Ad-free experience</td>
-                  <td class="fp-no">—</td>
-                  <td class="fp-no">—</td>
-                  <td class="fp-yes">✓</td>
-                  <td class="fp-yes">✓</td>
-                </tr>
-                <tr>
-                  <td>Submit courses to Grow for review</td>
-                  <td class="fp-no">—</td>
-                  <td class="fp-no">—</td>
-                  <td class="fp-no">—</td>
-                  <td class="fp-yes">✓</td>
-                </tr>
-              </tbody>
-            </table>
-          </div>
+        <div class="fp-comparison-title">
+          Compare membership benefits
         </div>
+
+        <div class="fp-table-scroll">
+          <table class="fp-comparison">
+            <thead>
+              <tr>
+                <th>Feature</th>
+                <th>Free</th>
+                <th>Early Supporter</th>
+                <th>Power Supporter</th>
+                <th>Family Member</th>
+              </tr>
+            </thead>
+
+            <tbody>
+              <tr>
+                <td>Planning and productivity tools</td>
+                <td class="fp-yes">✓</td>
+                <td class="fp-yes">✓</td>
+                <td class="fp-yes">✓</td>
+                <td class="fp-yes">✓</td>
+              </tr>
+              <tr>
+                <td>Core social features</td>
+                <td class="fp-yes">✓</td>
+                <td class="fp-yes">✓</td>
+                <td class="fp-yes">✓</td>
+                <td class="fp-yes">✓</td>
+              </tr>
+              <tr>
+                <td>Supporter badge</td>
+                <td class="fp-no">—</td>
+                <td class="fp-yes">✓</td>
+                <td class="fp-yes">✓</td>
+                <td class="fp-yes">✓</td>
+              </tr>
+              <tr>
+                <td>Platform recognition</td>
+                <td class="fp-no">—</td>
+                <td>Standard</td>
+                <td>More visible</td>
+                <td>Highest</td>
+              </tr>
+              <tr>
+                <td>Ad-free experience</td>
+                <td class="fp-no">—</td>
+                <td class="fp-no">—</td>
+                <td class="fp-yes">✓</td>
+                <td class="fp-yes">✓</td>
+              </tr>
+              <tr>
+                <td>Submit courses to Grow</td>
+                <td class="fp-no">—</td>
+                <td class="fp-no">—</td>
+                <td class="fp-no">—</td>
+                <td class="fp-yes">✓</td>
+              </tr>
+              <tr>
+                <td>Course review</td>
+                <td class="fp-no">—</td>
+                <td class="fp-no">—</td>
+                <td class="fp-no">—</td>
+                <td class="fp-yes">✓</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+        <p class="fp-pricing-footnote">
+          Supporter memberships are optional. USD amounts are approximate
+          conversions; current pricing and payment options are confirmed
+          on the checkout page.
+        </p>
+
       </div>
     </section>
 
